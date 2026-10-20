@@ -1,11 +1,12 @@
 import { site } from '../../content/site'
 import { cn } from '../../lib/cn'
+import { LogoMark } from './LogoMark'
 
-/** Placeholder crest — replace public/images/logo.svg with the school's real logo. */
+/** School logo mark beside the name. `inverted` draws the mark's lines in white for dark backgrounds. */
 export function Logo({ inverted, className }: { inverted?: boolean; className?: string }) {
   return (
     <span className={cn('inline-flex items-center gap-3', className)}>
-      <img src="/images/logo.svg" alt="" width={48} height={48} className="h-12 w-12 shrink-0" />
+      <LogoMark weight={1.8} className={cn('h-14 w-[69px] shrink-0', inverted ? 'text-white' : 'text-[#2A2266]')} />
       <span className="flex flex-col leading-none">
         <span className={cn('whitespace-nowrap font-heading text-lg font-bold sm:text-xl', inverted ? 'text-white' : 'text-blue-900')}>
           {site.shortName}
@@ -14,6 +15,7 @@ export function Logo({ inverted, className }: { inverted?: boolean; className?: 
           Primary School
         </span>
       </span>
+      <span className="sr-only">{site.name}</span>
     </span>
   )
 }

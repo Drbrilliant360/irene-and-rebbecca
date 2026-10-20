@@ -1,5 +1,6 @@
 // Generates lightweight SVG placeholder art in public/images/.
 // Replace these with real, consented, EXIF-stripped photos (see README → Images).
+// The logo and favicon are NOT generated here — they come from brand/ (see README → Logo).
 // Run: npm run placeholders
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -100,14 +101,5 @@ const gallery = [
   [800, 600, C.sky, C.yellow, C.red],
 ]
 gallery.forEach(([w, h, bg, a, b], i) => write(`gallery-${i + 1}.svg`, scene(w, h, bg, a, b, `Photo ${i + 1} coming soon`)))
-
-const crest = (size) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}">
-  <path d="M32 3 L57 12 V30 C57 46 46 56 32 61 C18 56 7 46 7 30 V12 Z" fill="${C.blue}"/>
-  <path d="M32 3 L57 12 V30 C57 46 46 56 32 61 C18 56 7 46 7 30 V12 Z" fill="none" stroke="${C.yellow}" stroke-width="3"/>
-  <circle cx="20" cy="18" r="3" fill="${C.yellow}"/><circle cx="44" cy="18" r="3" fill="${C.green}"/><circle cx="32" cy="14" r="3" fill="${C.red}"/>
-  <text x="32" y="44" font-family="system-ui, sans-serif" font-weight="800" font-size="20" text-anchor="middle" fill="#fff">I&amp;R</text>
-</svg>`
-write('logo.svg', crest(48))
-writeFileSync(fileURLToPath(new URL('../public/favicon.svg', import.meta.url)), crest(64) + '\n')
 
 console.log('Placeholder images written to public/images/')

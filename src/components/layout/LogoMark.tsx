@@ -1,0 +1,35 @@
+// Generated from brand/logo-full.svg (a vector redraw of brand/logo-original.png).
+// Strokes use currentColor so the mark can sit on white or navy; the dots keep their colours.
+/** `weight` scales the line thickness; small renders (header) need heavier lines to stay legible. */
+export function LogoMark({ className, weight = 1 }: { className?: string; weight?: number }) {
+  return (
+    <svg viewBox="155 88 830 670" className={className} aria-hidden="true" focusable="false">
+      <g fill="none" stroke="currentColor" strokeWidth={9 * weight} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M308 100 C 300 300, 296 520, 322 742" />
+        <path d="M262 132 L386 132" />
+        <path d="M232 172 L356 168" />
+        <path d="M196 230 L420 200" />
+        <path d="M190 626 L430 656" />
+        <path d="M250 688 L372 688" />
+        <path d="M222 716 L346 716" />
+        <path d="M568 128 C 588 330, 600 560, 602 738" />
+        <path d="M494 266 L590 168" />
+        <path d="M518 180 L530 290" />
+        <path d="M540 176 L552 286" />
+        <path d="M500 262 C 600 160, 700 120, 800 132 C 900 145, 935 240, 912 320 C 885 410, 780 440, 690 430 C 630 424, 570 400, 536 376" />
+        <path d="M536 376 L606 520 C 640 600, 680 690, 760 712 C 860 740, 952 660, 950 570 C 948 490, 880 455, 818 465 C 760 475, 735 535, 755 585 C 775 630, 830 630, 840 590" />
+        <path d="M530 670 L652 668" />
+        <path d="M556 702 L680 700" />
+      </g>
+      <g stroke="currentColor" strokeWidth={6 * weight}>
+        <circle cx="196" cy="230" r="30" fill="#F5D21E" />
+        <circle cx="420" cy="200" r="30" fill="#1F7A45" />
+        <circle cx="568" cy="124" r="30" fill="#EE7A22" />
+        <circle cx="748" cy="274" r="30" fill="#BFE0C2" />
+        <circle cx="828" cy="564" r="30" fill="#D4106A" />
+        <circle cx="190" cy="626" r="30" fill="#D7262E" />
+        <circle cx="430" cy="656" r="30" fill="#1A8BD8" />
+      </g>
+    </svg>
+  )
+}

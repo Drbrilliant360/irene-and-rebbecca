@@ -41,7 +41,16 @@ Change the text between the quotes and save. Anything in `[SQUARE_BRACKETS]` is 
 
 **Safeguarding:** only use photos the school has parental consent for, never put pupils' full names next to photos, and strip location/EXIF data before uploading (e.g. `exiftool -all= photo.jpg`, or export with "remove location" on your phone).
 
-The current images are generated placeholders (`npm run placeholders` recreates them). Replace `public/images/logo.svg` and `public/favicon.svg` with the real school crest.
+The current photos are generated placeholders (`npm run placeholders` recreates them; it never touches the logo).
+
+### Logo
+
+- `brand/logo-original.png` — the photo of the school logo this site's logo was redrawn from.
+- `brand/logo-full.svg` — vector redraw (mark + "SCHOOL"); copied to `public/images/logo.svg` (404 page, structured data).
+- `public/images/logo-mark.svg` — mark only; `public/favicon.svg` — mark on a white tile.
+- `src/components/layout/LogoMark.tsx` — the mark used in the header, mobile menu and footer. Its lines follow the text colour, so it turns white on the navy footer while the dots keep their colours.
+
+If the school has an official vector file (SVG/AI/EPS/PDF) from its designer, use that instead of the redraw.
 
 ## 3. Switching style direction (A / B / C)
 
@@ -129,6 +138,7 @@ public/                     images, favicon, _headers, robots.txt
 - Footer privacy notice: `[PRIVACY_CONTACT]`
 
 **Files**
-- `public/images/*` — all photos (currently placeholders), `logo.svg`, `favicon.svg`
+- `public/images/*` — all photos (currently placeholders)
+- Logo — optionally replace the redraw with the school's official vector file
 - `public/images/og-image.jpg` — social sharing image (1200×630)
 - `index.html` — canonical URL, `og:url`, `og:image` once the domain is known
