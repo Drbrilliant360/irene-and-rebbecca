@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react'
 import type { MouseEvent } from 'react'
 import { useLocale } from '../../content/LocaleProvider'
 import { icons } from '../../lib/icons'
@@ -6,6 +5,7 @@ import { cn } from '../../lib/cn'
 import { scrollToHash } from '../../lib/scrollTo'
 import { useTheme } from '../../theme/ThemeProvider'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
+import { ArrowRight } from '../ui/Icon'
 
 /** One-click routes for each audience, directly below the hero. */
 export function AudienceLinks() {

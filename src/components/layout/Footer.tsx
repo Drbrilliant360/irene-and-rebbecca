@@ -1,8 +1,8 @@
-import { ArrowUp, Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import { useLocale } from '../../content/LocaleProvider'
 import { isPlaceholder, mailHref, site, telHref } from '../../content/site'
 import { NAV_IDS } from '../../content/types'
 import { Logo } from './Logo'
+import { ArrowUp, Instagram, Mail, MapPin, Phone } from '../ui/Icon'
 
 const linkClass = 'inline-flex min-h-11 items-center text-white/90 underline-offset-4 hover:text-white hover:underline focus-visible:text-white'
 

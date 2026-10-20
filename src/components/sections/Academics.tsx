@@ -1,4 +1,3 @@
-import { Check, Info } from 'lucide-react'
 import { useLocale } from '../../content/LocaleProvider'
 import { icons } from '../../lib/icons'
 import { cn } from '../../lib/cn'
@@ -6,6 +5,7 @@ import { useTheme } from '../../theme/ThemeProvider'
 import { Card } from '../ui/Card'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
+import { Check, Info } from '../ui/Icon'
 
 export function Academics() {
   const { t } = useLocale()

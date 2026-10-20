@@ -1,9 +1,9 @@
-import { ChevronLeft, ChevronRight, Pause, Play, Quote } from 'lucide-react'
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { fill } from '../../content/LocaleProvider'
 import type { Content } from '../../content/types'
 import { cn } from '../../lib/cn'
+import { ChevronLeft, ChevronRight, Pause, Play, Quote } from './Icon'
 
 type Labels = Content['testimonials']
 

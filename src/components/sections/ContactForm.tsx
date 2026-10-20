@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle, CheckCircle2, Mail, MessageCircle, Phone } from 'lucide-react'
 import { useId, useState, type ReactNode } from 'react'
 import { useForm, type FieldError } from 'react-hook-form'
 import { useLocale } from '../../content/LocaleProvider'
@@ -7,6 +6,7 @@ import { mailHref, site, telHref, whatsappHref } from '../../content/site'
 import { CLASS_OPTIONS, enquirySchema, type EnquiryInput, type ErrorCode } from '../../lib/enquirySchema'
 import { cn } from '../../lib/cn'
 import { Button } from '../ui/Button'
+import { AlertCircle, CheckCircle, Mail, Phone, WhatsApp } from '../ui/Icon'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
@@ -52,7 +52,7 @@ export function FallbackContacts() {
   const { t } = useLocale()
   const items = [
     { Icon: Phone, label: site.phone, href: telHref(site.phone) },
-    { Icon: MessageCircle, label: `${t.contact.whatsapp} · ${site.whatsapp}`, href: whatsappHref(site.whatsapp) },
+    { Icon: WhatsApp, label: `${t.contact.whatsapp} · ${site.whatsapp}`, href: whatsappHref(site.whatsapp) },
     { Icon: Mail, label: site.email, href: mailHref(site.email) },
   ]
   return (
@@ -144,7 +144,7 @@ export default function ContactForm() {
         {status === 'success' && (
           <div className="rounded-2xl bg-accent-green-dark px-5 py-4 text-white">
             <p className="flex items-center gap-2 font-heading text-lg font-bold">
-              <CheckCircle2 aria-hidden="true" className="h-5 w-5" />
+              <CheckCircle aria-hidden="true" className="h-5 w-5" />
               {c.success.title}
             </p>
             <p>{c.success.text}</p>

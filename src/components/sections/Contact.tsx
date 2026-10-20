@@ -1,4 +1,3 @@
-import { Briefcase, Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { lazy, Suspense, useState } from 'react'
 import { useLocale } from '../../content/LocaleProvider'
 import { isPlaceholder, mailHref, site, telHref, whatsappHref } from '../../content/site'
@@ -7,6 +6,7 @@ import { useTheme } from '../../theme/ThemeProvider'
 import { Button, ButtonLink } from '../ui/Button'
 import { Reveal } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
+import { Briefcase, Clock, Mail, MapPin, Phone, WhatsApp } from '../ui/Icon'
 const MapFrame = lazy(() => import('./MapFrame'))
 // react-hook-form + zod live in their own chunk so they don't delay the first paint.
 const ContactForm = lazy(() => import('./ContactForm'))
@@ -99,13 +99,13 @@ export function Contact() {
               <div className="mt-6">
                 {wa ? (
                   <ButtonLink href={wa} variant="whatsapp">
-                    <MessageCircle aria-hidden="true" className="h-5 w-5" />
+                    <WhatsApp aria-hidden="true" className="h-5 w-5" />
                     {c.whatsapp}
                     <span className="sr-only"> {t.meta.opensNewTab}</span>
                   </ButtonLink>
                 ) : (
                   <span className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-dashed border-accent-green-dark px-5 font-bold text-accent-green-dark">
-                    <MessageCircle aria-hidden="true" className="h-5 w-5" />
+                    <WhatsApp aria-hidden="true" className="h-5 w-5" />
                     {c.whatsapp} · {site.whatsapp}
                   </span>
                 )}

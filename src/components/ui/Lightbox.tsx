@@ -1,10 +1,10 @@
-import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import { fill } from '../../content/LocaleProvider'
 import type { ImageContent } from '../../content/types'
 import { useFocusTrap } from '../../hooks/useFocusTrap'
 import { SafeImage } from './SafeImage'
+import { ChevronLeft, ChevronRight, Close } from './Icon'
 
 interface LightboxProps {
   images: ImageContent[]
@@ -50,7 +50,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose, labels
           {fill(labels.counter, { n: index + 1, total })}
         </p>
         <button type="button" onClick={onClose} aria-label={labels.close} className={controlClass}>
-          <X aria-hidden="true" className="h-6 w-6" />
+          <Close aria-hidden="true" className="h-6 w-6" />
         </button>
       </div>
 

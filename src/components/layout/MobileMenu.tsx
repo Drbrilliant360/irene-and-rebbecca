@@ -1,4 +1,3 @@
-import { X } from 'lucide-react'
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { useRef, type MouseEvent } from 'react'
 import { useLocale } from '../../content/LocaleProvider'
@@ -9,6 +8,7 @@ import { scrollToHash } from '../../lib/scrollTo'
 import { ButtonLink } from '../ui/Button'
 import { LanguageToggle } from './LanguageToggle'
 import { Logo } from './Logo'
+import { Close } from '../ui/Icon'
 
 interface MobileMenuProps {
   open: boolean
@@ -67,7 +67,7 @@ function MenuPanel({ onClose, active }: Omit<MobileMenuProps, 'open'>) {
           aria-label={t.nav.closeMenu}
           className="inline-flex h-11 w-11 items-center justify-center rounded-full text-blue-900 hover:bg-blue-50 focus-visible:bg-blue-50"
         >
-          <X aria-hidden="true" className="h-7 w-7" />
+          <Close aria-hidden="true" className="h-7 w-7" />
         </button>
       </div>
       <nav aria-label={t.nav.label} className="container-site flex-1 py-6">

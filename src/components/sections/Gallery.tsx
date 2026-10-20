@@ -1,4 +1,3 @@
-import { Expand, Instagram } from 'lucide-react'
 import { lazy, Suspense, useState } from 'react'
 import { useLocale } from '../../content/LocaleProvider'
 import { site } from '../../content/site'
@@ -8,6 +7,7 @@ import { ButtonLink } from '../ui/Button'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 import { SafeImage } from '../ui/SafeImage'
 import { SectionHeading } from '../ui/SectionHeading'
+import { Expand, Instagram } from '../ui/Icon'
 
 const Lightbox = lazy(() => import('../ui/Lightbox'))
 const preloadLightbox = () => void import('../ui/Lightbox')

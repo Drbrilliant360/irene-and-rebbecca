@@ -1,4 +1,3 @@
-import { Download, FileText, Wallet } from 'lucide-react'
 import { m, useReducedMotion, useScroll } from 'framer-motion'
 import { useRef, type MouseEvent } from 'react'
 import { useLocale } from '../../content/LocaleProvider'
@@ -9,6 +8,7 @@ import { useTheme } from '../../theme/ThemeProvider'
 import { ButtonLink } from '../ui/Button'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
+import { Download, FileText, Wallet } from '../ui/Icon'
 
 const stepColours = ['bg-accent-yellow text-blue-900', 'bg-accent-red text-white', 'bg-accent-green-dark text-white', 'bg-blue-700 text-white']
 

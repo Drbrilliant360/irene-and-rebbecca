@@ -1,4 +1,3 @@
-import { BadgeCheck, Compass, Target } from 'lucide-react'
 import { useLocale } from '../../content/LocaleProvider'
 import { cn } from '../../lib/cn'
 import { useTheme } from '../../theme/ThemeProvider'
@@ -6,6 +5,7 @@ import { DotCluster } from '../ui/Decor'
 import { Reveal } from '../ui/Reveal'
 import { SafeImage } from '../ui/SafeImage'
 import { SectionHeading } from '../ui/SectionHeading'
+import { BadgeCheck, Compass, Target } from '../ui/Icon'
 
 export function About() {
   const { t } = useLocale()

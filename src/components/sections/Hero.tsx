@@ -1,4 +1,3 @@
-import { CheckCircle2 } from 'lucide-react'
 import { m, useReducedMotion } from 'framer-motion'
 import { Fragment, type MouseEvent } from 'react'
 import { useLocale } from '../../content/LocaleProvider'
@@ -11,6 +10,7 @@ import { ButtonLink } from '../ui/Button'
 import { FloatingShape } from '../ui/Decor'
 import { SafeImage } from '../ui/SafeImage'
 import { WaveDivider } from '../ui/WaveDivider'
+import { CheckCircle } from '../ui/Icon'
 
 const normalise = (word: string) => word.replace(/[^\p{L}’']/gu, '').toLowerCase()
 
@@ -85,7 +85,7 @@ function AdmissionsBadge() {
   const { t } = useLocale()
   return (
     <Badge tone="green" className="shadow-soft">
-      <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
+      <CheckCircle aria-hidden="true" className="h-4 w-4" />
       {t.hero.badge}
     </Badge>
   )

@@ -1,6 +1,6 @@
-import { ArrowRight } from 'lucide-react'
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
 import { cn } from '../../lib/cn'
+import { ArrowRight } from './Icon'
 
 type Variant = 'primary' | 'accent' | 'outline' | 'light' | 'whatsapp'
 type Size = 'md' | 'sm'

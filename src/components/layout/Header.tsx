@@ -1,4 +1,3 @@
-import { Menu } from 'lucide-react'
 import { useRef, useState, type MouseEvent } from 'react'
 import { useLocale } from '../../content/LocaleProvider'
 import { NAV_IDS } from '../../content/types'
@@ -10,6 +9,7 @@ import { ButtonLink } from '../ui/Button'
 import { LanguageToggle } from './LanguageToggle'
 import { Logo } from './Logo'
 import { MobileMenu } from './MobileMenu'
+import { Menu } from '../ui/Icon'
 
 /**
  * Fixed header. Shrinking is done with transforms only (background layer scales,

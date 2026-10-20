@@ -1,6 +1,6 @@
 import { useState, type ImgHTMLAttributes } from 'react'
-import { ImageOff } from 'lucide-react'
 import { cn } from '../../lib/cn'
+import { ImageOff } from './Icon'
 
 interface SafeImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'width' | 'height'> {
   src: string

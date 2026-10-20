@@ -1,9 +1,9 @@
-import { ArrowRight } from 'lucide-react'
 import type { ReactNode } from 'react'
 import type { ImageContent } from '../../content/types'
 import { cn } from '../../lib/cn'
 import { useTheme } from '../../theme/ThemeProvider'
 import { SafeImage } from './SafeImage'
+import { ArrowRight } from './Icon'
 
 const accents = ['bg-accent-yellow', 'bg-accent-red', 'bg-accent-green']
 

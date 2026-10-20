@@ -1,4 +1,3 @@
-import { CalendarDays, Info } from 'lucide-react'
 import { useLocale } from '../../content/LocaleProvider'
 import { cn } from '../../lib/cn'
 import { useTheme } from '../../theme/ThemeProvider'
@@ -6,6 +5,7 @@ import { Badge } from '../ui/Badge'
 import { Card } from '../ui/Card'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
+import { Calendar, Info } from '../ui/Icon'
 
 export function NewsEvents() {
   const { t } = useLocale()
@@ -44,7 +44,7 @@ export function NewsEvents() {
 
           <Reveal className={cn('bg-blue-900 p-6 text-white sm:p-8', panel)} delay={0.1}>
             <h3 id="term-dates" className="flex items-center gap-2 text-h3 text-white">
-              <CalendarDays aria-hidden="true" className="h-6 w-6 text-accent-yellow" />
+              <Calendar aria-hidden="true" className="h-6 w-6 text-accent-yellow" />
               {n.termTitle}
             </h3>
             <dl className="mt-6 divide-y divide-white/15">
