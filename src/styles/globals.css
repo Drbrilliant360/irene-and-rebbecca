@@ -1,0 +1,98 @@
+@import '@fontsource/baloo-2/latin-600.css';
+@import '@fontsource/baloo-2/latin-700.css';
+@import '@fontsource/nunito-sans/latin-400.css';
+@import '@fontsource/nunito-sans/latin-700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue-900: #0f2d5c; /* headings, body text on white, footer bg */
+  --blue-700: #1e4fa3; /* PRIMARY: buttons, links, nav active */
+  --blue-500: #3a6fd8; /* hover states, highlights */
+  --blue-50: #eef3fc; /* section backgrounds */
+  --white: #ffffff; /* base background */
+  --yellow: #f5c518; /* fills, badges, underlines — never as text on white */
+  --red: #d7263d; /* event dates, notices (white text = 4.96:1) */
+  --green: #1f8a4c; /* decorative accent (white text = 4.38:1, so not for small text) */
+  --green-700: #166a3a; /* text-bearing green badges (white text = 6.6:1) */
+  --gray-600: #4b5563; /* secondary text */
+  --header-h: 5rem;
+
+  /* Same colours as RGB channels, so Tailwind opacity modifiers (e.g. bg-blue-900/80) work. */
+  --blue-900-rgb: 15 45 92;
+  --blue-700-rgb: 30 79 163;
+  --blue-500-rgb: 58 111 216;
+  --blue-50-rgb: 238 243 252;
+  --yellow-rgb: 245 197 24;
+  --red-rgb: 215 38 61;
+  --green-rgb: 31 138 76;
+  --green-700-rgb: 22 106 58;
+  --gray-600-rgb: 75 85 99;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 0.5rem);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-body text-blue-900 antialiased;
+    font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading font-bold text-blue-900;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* 3px yellow ring with a navy gap so it is visible on light and dark backgrounds */
+  :focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--blue-900);
+  }
+
+  img,
+  svg {
+    max-width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-pad {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .placeholder-chip {
+    @apply rounded bg-accent-yellow/30 px-1 font-semibold;
+  }
+}
