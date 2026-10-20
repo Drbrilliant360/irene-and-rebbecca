@@ -93,7 +93,7 @@ export function Contact() {
               <dl className="mt-5 space-y-4">
                 <DetailRow icon={Phone} label={c.details.phone} value={site.phone} href={telHref(site.phone)} />
                 <DetailRow icon={Mail} label={c.details.email} value={site.email} href={mailHref(site.email)} />
-                <DetailRow icon={MapPin} label={c.details.address} value={`${site.address} · ${site.district}, ${site.region}`} />
+                <DetailRow icon={MapPin} label={c.details.address} value={site.address} />
                 <DetailRow icon={Clock} label={c.details.hoursTitle} value={c.details.hours.join(' · ')} />
               </dl>
               <div className="mt-6">

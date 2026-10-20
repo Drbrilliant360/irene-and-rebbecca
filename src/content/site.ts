@@ -6,6 +6,8 @@ export const site = {
   name: 'Irene and Rebeca Primary School',
   shortName: 'Irene & Rebeca',
   regNo: 'P0508098',
+  /** Second registration number shown in the school's Instagram bio. */
+  regNo2: 'KA.07/7/E.AO001',
   level: 'Primary',
   district: 'Missenyi',
   region: 'Kagera',
@@ -14,10 +16,12 @@ export const site = {
   instagram: 'https://www.instagram.com/ireneandrebecaprimary/',
   instagramHandle: '@ireneandrebecaprimary',
 
-  phone: '[PHONE_NUMBER]', // e.g. +255 7XX XXX XXX
-  email: '[EMAIL_ADDRESS]',
-  whatsapp: '[WHATSAPP_NUMBER]', // international format, digits only, e.g. 2557XXXXXXXX
-  address: '[PHYSICAL_ADDRESS]',
+  nearestTown: 'Bukoba',
+
+  phone: '+255 742 692 690',
+  email: 'irschoolbk@gmail.com',
+  whatsapp: '255742692690', // international format, digits only
+  address: 'Missenyi District, near Bukoba, Kagera, Tanzania',
   admissionsYear: '[YEAR]',
 
   /** Google Maps "Embed a map" src URL. Leave empty to show the placeholder. */

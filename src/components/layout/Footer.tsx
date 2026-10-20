@@ -33,7 +33,7 @@ export function Footer() {
           <Logo inverted />
           <p className="mt-4 max-w-sm text-white/90">{t.footer.description}</p>
           <p className="mt-4 inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-bold">
-            Reg. No. {site.regNo} · {site.district} District, {site.region} Region, {site.country}
+            Reg. No. {site.regNo} · {site.regNo2} · {site.district} District, {site.region} Region, {site.country}
           </p>
         </div>
 

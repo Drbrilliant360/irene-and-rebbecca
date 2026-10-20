@@ -49,7 +49,7 @@ export const sw: Content = {
     badge: `Udahili Umefunguliwa ${site.admissionsYear}`,
     headline: 'Mahali Kila Mtoto Hujifunza, Hukua na Kung’aa',
     highlight: 'Kung’aa',
-    subline: `Shule ya msingi yenye upendo huko ${site.district}, ${site.region}, inayowasaidia watoto kujenga msingi imara, tabia njema na kupenda kujifunza.`,
+    subline: `Elimu bora ya awali na makuzi kamili kwa watoto katika mazingira ya vijijini — ${site.district}, karibu na ${site.nearestTown}, ${site.region}.`,
     image: { ...images.hero, alt: 'Wanafunzi wa Shule ya Msingi Irene and Rebeca (picha ya muda)' },
   },
   audiences: {
@@ -71,7 +71,7 @@ export const sw: Content = {
       `${site.name} ni shule ya msingi iliyosajiliwa katika Wilaya ya ${site.district}, Mkoa wa ${site.region}, Tanzania.`,
       '[HISTORIA_YA_SHULE — historia fupi: ilianzishwa lini ([MWAKA_WA_KUANZISHWA]), na nani, na nini kinaifanya kuwa ya kipekee.]',
     ],
-    regBadge: `Shule ya Msingi Iliyosajiliwa · Namba ya Usajili ${site.regNo}`,
+    regBadge: `Shule ya Msingi Iliyosajiliwa · Namba ya Usajili ${site.regNo} · ${site.regNo2}`,
     welcome: {
       title: 'Karibu kutoka kwa Mwalimu Mkuu',
       text: [
@@ -292,7 +292,7 @@ export const sw: Content = {
     },
   },
   footer: {
-    description: `Shule ya msingi iliyosajiliwa huko ${site.district}, ${site.region}, Tanzania — tukimsaidia kila mtoto kujifunza, kukua na kung’aa.`,
+    description: `Elimu bora ya awali na makuzi kamili kwa watoto katika mazingira ya vijijini — ${site.district}, karibu na ${site.nearestTown}, ${site.region}, Tanzania.`,
     quickLinks: 'Viungo vya haraka',
     contactTitle: 'Mawasiliano',
     follow: 'Tufuate',

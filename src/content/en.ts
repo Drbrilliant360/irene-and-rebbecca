@@ -48,7 +48,7 @@ export const en: Content = {
     badge: `Admissions Open ${site.admissionsYear}`,
     headline: 'Where Every Child Learns, Grows and Shines',
     highlight: 'Shines',
-    subline: `A caring primary school in ${site.district}, ${site.region}, helping children build strong foundations, good character and a love of learning.`,
+    subline: `Quality early education and holistic growth for children in a rural environment — in ${site.district}, near ${site.nearestTown}, ${site.region}.`,
     image: { ...images.hero, alt: 'Pupils at Irene and Rebeca Primary School (placeholder image)' },
   },
   audiences: {
@@ -94,7 +94,7 @@ export const en: Content = {
       `${site.name} is a registered primary school in ${site.district} District, ${site.region} Region, Tanzania.`,
       '[SCHOOL_STORY — a short history: when the school was founded ([FOUNDING_YEAR]), by whom, and what makes it special.]',
     ],
-    regBadge: `Registered Primary School · Reg. No. ${site.regNo}`,
+    regBadge: `Registered Primary School · Reg. No. ${site.regNo} · ${site.regNo2}`,
     welcome: {
       title: 'Welcome from our Head Teacher',
       text: [
@@ -351,7 +351,7 @@ export const en: Content = {
     },
   },
   footer: {
-    description: `A registered primary school in ${site.district}, ${site.region}, Tanzania — helping every child learn, grow and shine.`,
+    description: `Quality early education and holistic growth for children in a rural environment — ${site.district}, near ${site.nearestTown}, ${site.region}, Tanzania.`,
     quickLinks: 'Quick links',
     contactTitle: 'Contact',
     follow: 'Follow us',

@@ -119,7 +119,6 @@ public/                     images, favicon, _headers, robots.txt
 ## 8. Placeholders the school must fill in
 
 **`src/content/site.ts`**
-- `[PHONE_NUMBER]`, `[EMAIL_ADDRESS]`, `[WHATSAPP_NUMBER]`, `[PHYSICAL_ADDRESS]`
 - `[YEAR]` — admissions year shown in the hero badge
 - `mapEmbedUrl` — Google Maps "Embed a map" link
 - `prospectusUrl` — link to the prospectus PDF (e.g. put `prospectus.pdf` in `public/`)
