@@ -40,7 +40,7 @@ function MapBlock() {
 
   return (
     <div className="overflow-hidden rounded-card bg-blue-50">
-      <div className="aspect-[4/3] w-full sm:aspect-video">
+      <div className={cn('w-full', site.mapEmbedUrl ? 'aspect-[4/3] sm:aspect-video' : 'py-8')}>
         {load && site.mapEmbedUrl ? (
           <Suspense fallback={null}>
             <MapFrame src={site.mapEmbedUrl} title={`${m.title} — ${site.name}`} />

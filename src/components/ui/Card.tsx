@@ -57,7 +57,7 @@ export function Card({ index = 0, image, href, linkLabel, children, className }:
           />
         </div>
       )}
-      <div className="relative flex flex-1 flex-col p-6">
+      <div className="relative flex flex-1 flex-col p-5 sm:p-6">
         {children}
         {href && linkLabel && (
           <a

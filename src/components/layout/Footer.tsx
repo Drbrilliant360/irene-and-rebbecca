@@ -41,7 +41,7 @@ export function Footer() {
           <h2 id="footer-links" className="font-heading text-lg font-bold text-white">
             {t.footer.quickLinks}
           </h2>
-          <ul className="mt-3">
+          <ul className="mt-3 grid grid-cols-2 gap-x-4 sm:grid-cols-1">
             {NAV_IDS.map((id) => (
               <li key={id}>
                 <a href={`#${id}`} className={linkClass}>
@@ -83,7 +83,7 @@ export function Footer() {
         </details>
       </div>
 
-      <div className="container-site flex flex-col gap-4 border-t border-white/15 py-6 mt-8 text-sm text-white/90 sm:flex-row sm:items-center sm:justify-between">
+      <div className="container-site mt-8 flex flex-col gap-4 border-t border-white/15 pb-24 pt-6 text-sm sm:pb-6 text-white/90 sm:flex-row sm:items-center sm:justify-between">
         <p>
           © {year} {site.name}. {t.footer.rights}
         </p>

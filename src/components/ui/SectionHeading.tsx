@@ -17,7 +17,7 @@ export function SectionHeading({ id, eyebrow, title, intro, inverted, align }: S
   const theme = useTheme()
   const centered = (align ?? theme.headingAlign) === 'center'
   return (
-    <Reveal className={cn('mb-10 max-w-measure sm:mb-12', centered && 'mx-auto text-center')}>
+    <Reveal className={cn('mb-8 max-w-measure sm:mb-12', centered && 'mx-auto text-center')}>
       {eyebrow && (
         <p
           className={cn(

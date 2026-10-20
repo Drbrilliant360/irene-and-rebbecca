@@ -61,11 +61,11 @@ export function About() {
           </figure>
         </Reveal>
 
-        <div className="mt-16 grid items-center gap-10 lg:grid-cols-12">
+        <div className="mt-12 grid items-center gap-8 sm:mt-16 sm:gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <figure
               className={cn(
-                'relative mx-auto max-w-sm overflow-hidden',
+                'relative mx-auto max-w-[15rem] overflow-hidden sm:max-w-sm',
                 theme.name === 'C' ? 'rounded-card border-2 border-blue-900 shadow-chunky lg:-rotate-2' : theme.name === 'B' ? '' : 'rounded-card shadow-lift',
               )}
             >

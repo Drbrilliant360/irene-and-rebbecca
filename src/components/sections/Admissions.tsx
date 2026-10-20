@@ -87,7 +87,7 @@ export function Admissions() {
               {a.feesTitle}
             </h3>
             <p className="mt-4 text-ink">{a.feesText}</p>
-            <div className="mt-auto flex flex-wrap gap-3 pt-6">
+            <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap">
               <ButtonLink href="#contact" onClick={onNav} arrow>
                 {t.cta.apply}
               </ButtonLink>
@@ -97,7 +97,7 @@ export function Admissions() {
                   {a.prospectus}
                 </ButtonLink>
               ) : (
-                <span className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-dashed border-blue-900/30 px-5 font-bold text-ink">
+                <span className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border-2 border-dashed border-blue-900/30 px-5 font-bold text-ink">
                   <Download aria-hidden="true" className="h-4 w-4" />
                   {a.prospectusSoon}
                 </span>

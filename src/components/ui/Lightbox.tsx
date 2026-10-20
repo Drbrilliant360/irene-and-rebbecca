@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import { fill } from '../../content/LocaleProvider'
 import type { ImageContent } from '../../content/types'
 import { useFocusTrap } from '../../hooks/useFocusTrap'
+import { useSwipe } from '../../hooks/useSwipe'
 import { SafeImage } from './SafeImage'
 import { ChevronLeft, ChevronRight, Close } from './Icon'
 
@@ -26,6 +27,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose, labels
   const total = images.length
   const go = (delta: number) => onIndexChange((index + delta + total) % total)
   const image = images[index]
+  const swipe = useSwipe(() => go(1), () => go(-1))
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -54,8 +56,12 @@ export default function Lightbox({ images, index, onIndexChange, onClose, labels
         </button>
       </div>
 
-      <div className="relative flex min-h-0 flex-1 items-center justify-center gap-2 py-4 sm:gap-6">
-        <button type="button" onClick={() => go(-1)} aria-label={labels.prev} className={controlClass}>
+      <div
+        {...swipe}
+        style={{ touchAction: 'pan-y' }}
+        className="relative flex min-h-0 flex-1 items-center justify-center gap-2 py-4 sm:gap-6"
+      >
+        <button type="button" onClick={() => go(-1)} aria-label={labels.prev} className={`${controlClass} hidden sm:inline-flex`}>
           <ChevronLeft aria-hidden="true" className="h-7 w-7" />
         </button>
         <AnimatePresence mode="wait" initial={false}>
@@ -75,6 +81,16 @@ export default function Lightbox({ images, index, onIndexChange, onClose, labels
             {image.caption && <figcaption className="mt-4 text-center text-lg font-bold text-white">{image.caption}</figcaption>}
           </m.figure>
         </AnimatePresence>
+        <button type="button" onClick={() => go(1)} aria-label={labels.next} className={`${controlClass} hidden sm:inline-flex`}>
+          <ChevronRight aria-hidden="true" className="h-7 w-7" />
+        </button>
+      </div>
+
+      {/* Phones: full-width photo, controls below it (swipe also works). */}
+      <div className="flex items-center justify-center gap-6 pb-[env(safe-area-inset-bottom)] sm:hidden">
+        <button type="button" onClick={() => go(-1)} aria-label={labels.prev} className={controlClass}>
+          <ChevronLeft aria-hidden="true" className="h-7 w-7" />
+        </button>
         <button type="button" onClick={() => go(1)} aria-label={labels.next} className={controlClass}>
           <ChevronRight aria-hidden="true" className="h-7 w-7" />
         </button>

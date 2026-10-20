@@ -201,7 +201,7 @@ export function Hero() {
           </>
         }
       />
-      <div className="container-site relative pb-16 pt-14 sm:pb-24 sm:pt-20 lg:pb-32 lg:pt-28">
+      <div className="container-site relative pb-10 pt-10 sm:pb-24 sm:pt-20 lg:pb-32 lg:pt-28">
         <div className="max-w-3xl">
           <AdmissionsBadge />
           <Headline text={t.hero.headline} highlight={t.hero.highlight} className="mt-6 text-white" />

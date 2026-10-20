@@ -23,9 +23,9 @@ export function Stats() {
   }[theme.stats]
 
   return (
-    <section aria-labelledby="stats-title" className={cn('py-14 sm:py-16', wrapper)}>
+    <section aria-labelledby="stats-title" className={cn('py-10 sm:py-16', wrapper)}>
       <div className="container-site">
-        <h2 id="stats-title" className={cn('mb-8 text-center text-h3', theme.stats === 'band' && 'text-white')}>
+        <h2 id="stats-title" className={cn('mb-6 text-center text-h3 sm:mb-8', theme.stats === 'band' && 'text-white')}>
           {t.stats.title}
         </h2>
         <RevealGroup
@@ -40,14 +40,14 @@ export function Stats() {
               as="li"
               key={s.label}
               className={cn(
-                'flex flex-col items-center justify-center p-4 text-center',
+                'flex flex-col items-center justify-center p-3 text-center sm:p-4',
                 theme.stats === 'tiles' && cn('rounded-card border-2 border-blue-900 p-6 shadow-chunky', tileColours[i % 4], i % 2 ? 'lg:rotate-1' : 'lg:-rotate-1'),
                 theme.stats === 'lines' && 'border-t border-blue-900/15 py-8 lg:border-t-0',
               )}
             >
-              <span className="font-heading text-4xl font-bold sm:text-5xl">
+              <span className="font-heading text-3xl font-bold sm:text-5xl">
                 {s.value === null ? (
-                  <span className="text-2xl sm:text-3xl">
+                  <span className="break-all text-xl sm:text-3xl">
                     {s.placeholder}
                     {s.suffix}
                   </span>

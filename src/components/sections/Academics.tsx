@@ -18,9 +18,12 @@ export function Academics() {
       <div className="container-site">
         <SectionHeading id="academics-title" eyebrow={a.eyebrow} title={a.title} intro={a.intro} />
 
-        <RevealGroup as="ul" className="grid gap-6 md:grid-cols-3">
+        <RevealGroup
+          as="ul"
+          className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden"
+        >
           {a.stages.map((stage, i) => (
-            <RevealItem as="li" key={stage.title}>
+            <RevealItem as="li" key={stage.title} className="w-[82%] max-w-sm shrink-0 snap-center md:w-auto md:max-w-none">
               <Card index={i} image={stage.image} href="#admissions" linkLabel={t.cta.learnMore}>
                 <p className="text-sm font-bold uppercase tracking-wider text-blue-700">{stage.range}</p>
                 <h3 className="mt-1 text-h3">{stage.title}</h3>
@@ -33,9 +36,9 @@ export function Academics() {
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <Reveal className={cn('bg-blue-50 p-6 sm:p-8', panel)}>
             <h3 className="text-h3">{a.subjectsTitle}</h3>
-            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            <ul className="mt-4 grid gap-x-3 gap-y-2 text-[0.9375rem] min-[360px]:grid-cols-2 sm:text-base">
               {a.subjects.map((s) => (
-                <li key={s} className="flex items-center gap-2">
+                <li key={s} className="flex min-w-0 items-center gap-2 [overflow-wrap:anywhere]">
                   <Check aria-hidden="true" className="h-5 w-5 shrink-0 text-accent-green-dark" />
                   {s}
                 </li>

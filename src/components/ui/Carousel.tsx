@@ -2,6 +2,7 @@ import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { fill } from '../../content/LocaleProvider'
 import type { Content } from '../../content/types'
+import { useSwipe } from '../../hooks/useSwipe'
 import { cn } from '../../lib/cn'
 import { ChevronLeft, ChevronRight, Pause, Play, Quote } from './Icon'
 
@@ -34,6 +35,7 @@ export default function Carousel({ labels }: { labels: Labels }) {
 
   const go = (delta: number) => setIndex((i) => (i + delta + items.length) % items.length)
   const item = items[index]
+  const swipe = useSwipe(() => go(1), () => go(-1))
 
   return (
     <section
@@ -45,21 +47,26 @@ export default function Carousel({ labels }: { labels: Labels }) {
       onFocus={() => setHeld(true)}
       onBlur={(e) => !e.currentTarget.contains(e.relatedTarget) && setHeld(false)}
     >
-      <div aria-live={playing && !held ? 'off' : 'polite'} className="relative min-h-[16rem]">
+      <div
+        {...swipe}
+        style={{ touchAction: 'pan-y' }}
+        aria-live={playing && !held ? 'off' : 'polite'}
+        className="relative min-h-[16rem]"
+      >
         <AnimatePresence mode="wait" initial={false}>
           <m.figure
             key={index}
             role="group"
             aria-roledescription="slide"
             aria-label={fill(labels.slideLabel, { n: index + 1, total: items.length })}
-            className="relative rounded-card bg-white p-8 text-center shadow-soft sm:p-12"
+            className="relative rounded-card bg-white p-6 text-center shadow-soft sm:p-12"
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? undefined : { opacity: 0, y: -12 }}
             transition={{ duration: 0.35 }}
           >
             <Quote aria-hidden="true" className="mx-auto mb-4 h-10 w-10 text-accent-yellow" />
-            <blockquote className="text-xl font-semibold leading-relaxed text-blue-900 sm:text-2xl">
+            <blockquote className="text-lg font-semibold leading-relaxed text-blue-900 sm:text-2xl">
               <p>“{item.quote}”</p>
             </blockquote>
             <figcaption className="mt-6">

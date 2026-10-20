@@ -23,10 +23,17 @@ export function WhyUs() {
             return (
               <RevealItem as="li" key={item.title} className={theme.span(i)}>
                 <Card index={i}>
-                  <span className={cn('mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl', iconTints[i % iconTints.length])}>
-                    <Icon aria-hidden="true" className="h-6 w-6" />
-                  </span>
-                  <h3 className="text-h3">{item.title}</h3>
+                  <div className="flex items-center gap-3 sm:block">
+                    <span
+                      className={cn(
+                        'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl sm:mb-4 sm:h-12 sm:w-12',
+                        iconTints[i % iconTints.length],
+                      )}
+                    >
+                      <Icon aria-hidden="true" className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </span>
+                    <h3 className="text-h3">{item.title}</h3>
+                  </div>
                   <p className="mt-2 text-ink">{item.text}</p>
                 </Card>
               </RevealItem>

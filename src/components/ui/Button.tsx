@@ -6,7 +6,7 @@ type Variant = 'primary' | 'accent' | 'outline' | 'light' | 'whatsapp'
 type Size = 'md' | 'sm'
 
 const base =
-  'group relative inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-bold transition-[transform,box-shadow,background-color,color] duration-200 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 motion-safe:active:scale-[0.97] hover:shadow-lift focus-visible:shadow-lift disabled:pointer-events-none disabled:opacity-60'
+  'group relative inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full font-bold transition-[transform,box-shadow,background-color,color] duration-200 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 motion-safe:active:scale-[0.97] hover:shadow-lift focus-visible:shadow-lift disabled:pointer-events-none disabled:opacity-60'
 
 const variantClasses: Record<Variant, string> = {
   primary: 'bg-blue-700 text-white hover:bg-blue-500 focus-visible:bg-blue-500',
@@ -19,7 +19,7 @@ const variantClasses: Record<Variant, string> = {
 }
 
 const sizeClasses: Record<Size, string> = {
-  md: 'px-6 py-3 text-base',
+  md: 'px-4 py-3 text-[0.9375rem] sm:px-6 sm:text-base',
   sm: 'px-5 py-2 text-sm',
 }
 

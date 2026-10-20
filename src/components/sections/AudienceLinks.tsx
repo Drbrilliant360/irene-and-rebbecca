@@ -23,7 +23,7 @@ export function AudienceLinks() {
         <h2 id="audiences-title" className="sr-only">
           {t.audiences.title}
         </h2>
-        <RevealGroup as="ul" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup as="ul" className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {t.audiences.items.map((item) => {
             const Icon = icons[item.icon]
             return (
@@ -32,7 +32,7 @@ export function AudienceLinks() {
                   href={item.target}
                   onClick={onNav}
                   className={cn(
-                    'group relative flex h-full items-start gap-4 overflow-hidden p-5 transition-transform duration-300 motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1',
+                    'group relative flex h-full flex-col items-start gap-3 overflow-hidden p-4 transition-transform sm:flex-row sm:gap-4 sm:p-5 duration-300 motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1',
                     theme.name === 'C' ? 'rounded-card border-2 border-blue-900 bg-blue-50 shadow-chunky' : theme.name === 'B' ? 'border-t-2 border-blue-900 bg-blue-50' : 'rounded-card bg-blue-50 shadow-soft',
                   )}
                 >
@@ -41,18 +41,18 @@ export function AudienceLinks() {
                     aria-hidden="true"
                     className="absolute inset-0 origin-bottom scale-y-0 bg-blue-700 transition-transform duration-300 ease-out group-hover:scale-y-100 group-focus-visible:scale-y-100"
                   />
-                  <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-700 shadow-soft">
+                  <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-700 shadow-soft sm:h-12 sm:w-12">
                     <Icon aria-hidden="true" className="h-6 w-6 motion-safe:group-hover:animate-bounce-once motion-safe:group-focus-visible:animate-bounce-once" />
                   </span>
                   <ArrowRight
                     aria-hidden="true"
-                    className="absolute right-4 top-5 h-5 w-5 text-blue-700 transition-[transform,color] group-hover:translate-x-1 group-hover:text-white group-focus-visible:translate-x-1 group-focus-visible:text-white"
+                    className="absolute right-3 top-4 h-5 w-5 text-blue-700 sm:right-4 sm:top-5 transition-[transform,color] group-hover:translate-x-1 group-hover:text-white group-focus-visible:translate-x-1 group-focus-visible:text-white"
                   />
-                  <span className="relative flex-1 pr-6">
-                    <span className="block font-heading text-lg font-bold text-blue-900 transition-colors group-hover:text-white group-focus-visible:text-white">
+                  <span className="relative flex-1 sm:pr-6">
+                    <span className="block font-heading text-base font-bold leading-snug text-blue-900 sm:text-lg transition-colors group-hover:text-white group-focus-visible:text-white">
                       {item.title}
                     </span>
-                    <span className="mt-1 block text-ink transition-colors group-hover:text-white group-focus-visible:text-white">
+                    <span className="mt-1 block text-sm text-ink transition-colors sm:text-base group-hover:text-white group-focus-visible:text-white">
                       {item.text}
                     </span>
                   </span>
