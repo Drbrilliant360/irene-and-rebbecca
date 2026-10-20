@@ -109,6 +109,11 @@ After the first deploy, add the canonical URL, `og:url` and an absolute `og:imag
 - `prefers-reduced-motion` turns off all animation, parallax, autoplay and smooth scrolling.
 - Animations use transform/opacity only. Initial JS ≈ 100 KB gzipped; contact form, lightbox, carousel and map are split into separate chunks. The map loads only on tap. No third-party scripts, no tracking cookies.
 
+### Motion & Three.js
+
+- **Hero constellation (Three.js):** the seven coloured dots of the logo drift with small white stars and link up when close (`src/components/ui/HeroConstellation.tsx`). Three.js is a separate ~176 KB (gzipped) chunk, fetched only after the page is idle on wide screens with a mouse/trackpad, ≥ 4 GB memory, no data-saver/2G and no reduced-motion preference (`src/hooks/useRichDecoration.ts`). It pauses when off-screen or the tab is hidden; phones and slow connections never download it and see the CSS shapes instead.
+- **Scroll progress bar**, **hero photo parallax** and **pointer tilt on gallery photos** (`src/components/ui/Motion.tsx`) — transform-only, off under reduced motion; parallax and tilt are off on touch/small screens.
+
 ## 7. Project structure
 
 ```

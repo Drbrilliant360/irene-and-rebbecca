@@ -5,6 +5,7 @@ import { cn } from '../../lib/cn'
 import { useTheme } from '../../theme/ThemeProvider'
 import { ButtonLink } from '../ui/Button'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
+import { TiltBox } from '../ui/Motion'
 import { SafeImage } from '../ui/SafeImage'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Expand, Instagram } from '../ui/Icon'
@@ -27,30 +28,32 @@ export function Gallery() {
         <RevealGroup as="ul" className="columns-2 gap-4 md:columns-3 [&>li]:mb-4">
           {g.images.map((img, i) => (
             <RevealItem as="li" key={img.src} className="break-inside-avoid">
-              <button
-                type="button"
-                onClick={() => setOpen(i)}
-                aria-label={`${g.open}: ${img.caption}`}
-                onPointerEnter={preloadLightbox}
-                onFocus={preloadLightbox}
-                className={cn(
-                  'group relative block w-full overflow-hidden text-left',
-                  theme.name === 'C' ? 'rounded-card border-2 border-blue-900 shadow-chunky' : theme.name === 'B' ? '' : 'rounded-card',
-                  theme.name === 'C' && (i % 2 ? 'lg:rotate-1' : 'lg:-rotate-1'),
-                )}
-              >
-                <SafeImage
-                  {...img}
-                  sizes="(min-width: 768px) 33vw, 50vw"
-                  className="h-auto w-full transition-transform duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105"
-                />
-                <span className="absolute inset-0 flex items-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                  <span className="flex w-full items-center justify-between gap-2 font-bold text-white">
-                    {img.caption}
-                    <Expand aria-hidden="true" className="h-5 w-5 shrink-0" />
+              <TiltBox>
+                <button
+                  type="button"
+                  onClick={() => setOpen(i)}
+                  aria-label={`${g.open}: ${img.caption}`}
+                  onPointerEnter={preloadLightbox}
+                  onFocus={preloadLightbox}
+                  className={cn(
+                    'group relative block w-full overflow-hidden text-left',
+                    theme.name === 'C' ? 'rounded-card border-2 border-blue-900 shadow-chunky' : theme.name === 'B' ? '' : 'rounded-card',
+                    theme.name === 'C' && (i % 2 ? 'lg:rotate-1' : 'lg:-rotate-1'),
+                  )}
+                >
+                  <SafeImage
+                    {...img}
+                    sizes="(min-width: 768px) 33vw, 50vw"
+                    className="h-auto w-full transition-transform duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105"
+                  />
+                  <span className="absolute inset-0 flex items-end bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100">
+                    <span className="flex w-full items-center justify-between gap-2 font-bold text-white">
+                      {img.caption}
+                      <Expand aria-hidden="true" className="h-5 w-5 shrink-0" />
+                    </span>
                   </span>
-                </span>
-              </button>
+                </button>
+              </TiltBox>
             </RevealItem>
           ))}
         </RevealGroup>

@@ -2,7 +2,7 @@ import { useLocale } from '../../content/LocaleProvider'
 import { isPlaceholder, mailHref, site, telHref } from '../../content/site'
 import { NAV_IDS } from '../../content/types'
 import { Logo } from './Logo'
-import { ArrowUp, Instagram, Mail, MapPin, Phone } from '../ui/Icon'
+import { ArrowUp, ChevronDown, Instagram, Mail, MapPin, Phone } from '../ui/Icon'
 
 const linkClass = 'inline-flex min-h-11 items-center text-white/90 underline-offset-4 hover:text-white hover:underline focus-visible:text-white'
 
@@ -71,8 +71,9 @@ export function Footer() {
 
       <div className="container-site">
         <details id="privacy" className="group rounded-2xl bg-white/5 px-5 py-1 open:pb-5">
-          <summary className="flex min-h-11 cursor-pointer list-none items-center font-bold underline-offset-4 hover:underline">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-bold underline-offset-4 hover:underline [&::-webkit-details-marker]:hidden">
             {t.footer.privacy}
+            <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-300 group-open:rotate-180" />
           </summary>
           <div className="max-w-measure space-y-3 text-white/90">
             {t.footer.privacyText.map((p) => (

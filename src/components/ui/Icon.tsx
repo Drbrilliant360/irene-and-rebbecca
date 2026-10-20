@@ -1,5 +1,6 @@
 import {
   AlertCircleIcon,
+  ArrowDown01Icon,
   ArrowLeft01Icon,
   ArrowRight01Icon,
   ArrowRight02Icon,
@@ -65,6 +66,7 @@ export const ArrowRight = icon(ArrowRight02Icon)
 export const ArrowUp = icon(ArrowUp02Icon)
 export const ChevronLeft = icon(ArrowLeft01Icon)
 export const ChevronRight = icon(ArrowRight01Icon)
+export const ChevronDown = icon(ArrowDown01Icon)
 export const Close = icon(Cancel01Icon)
 export const Menu = icon(Menu01Icon)
 export const Expand = icon(Maximize01Icon)

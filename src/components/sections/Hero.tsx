@@ -1,7 +1,9 @@
 import { m, useReducedMotion } from 'framer-motion'
-import { Fragment, type MouseEvent } from 'react'
+import { Fragment, lazy, Suspense, useCallback, useRef, useState, type MouseEvent, type ReactNode, type RefObject } from 'react'
 import { useLocale } from '../../content/LocaleProvider'
 import { site } from '../../content/site'
+import type { ImageContent } from '../../content/types'
+import { useRichDecoration } from '../../hooks/useRichDecoration'
 import { cn } from '../../lib/cn'
 import { scrollToHash } from '../../lib/scrollTo'
 import { useTheme } from '../../theme/ThemeProvider'
@@ -11,6 +13,10 @@ import { FloatingShape } from '../ui/Decor'
 import { SafeImage } from '../ui/SafeImage'
 import { WaveDivider } from '../ui/WaveDivider'
 import { CheckCircle } from '../ui/Icon'
+import { useParallax } from '../ui/Motion'
+
+// Three.js (≈130 KB gzipped) lives in its own chunk and is only fetched on capable devices.
+const HeroConstellation = lazy(() => import('../ui/HeroConstellation'))
 
 const normalise = (word: string) => word.replace(/[^\p{L}’']/gu, '').toLowerCase()
 
@@ -67,8 +73,8 @@ function Ctas({ inverted }: { inverted: boolean }) {
     scrollToHash(e.currentTarget.hash)
   }
   return (
-    <div className="mt-8 flex flex-wrap gap-3">
-      <ButtonLink href="#contact" onClick={onNav} variant="accent" arrow>
+    <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+      <ButtonLink href="#contact" onClick={onNav} variant="accent" arrow className="col-span-2">
         {t.cta.visit}
       </ButtonLink>
       <ButtonLink href="#admissions" onClick={onNav} variant={inverted ? 'light' : 'outline'}>
@@ -78,6 +84,42 @@ function Ctas({ inverted }: { inverted: boolean }) {
         {t.cta.enquire}
       </ButtonLink>
     </div>
+  )
+}
+
+/**
+ * Photo background with a slow scroll parallax, a readability overlay, and (on capable
+ * devices) the Three.js logo constellation. `fallback` decoration shows until WebGL is ready.
+ */
+function HeroBackdrop({
+  sectionRef,
+  image,
+  overlay,
+  fallback,
+}: {
+  sectionRef: RefObject<HTMLElement>
+  image: ImageContent
+  overlay: string
+  fallback?: ReactNode
+}) {
+  const y = useParallax(sectionRef)
+  const rich = useRichDecoration()
+  const [webglReady, setWebglReady] = useState(false)
+  const onReady = useCallback(() => setWebglReady(true), [])
+
+  return (
+    <>
+      <m.div className="absolute inset-0 -z-10" style={y ? { y, scale: 1.12 } : undefined}>
+        <SafeImage {...image} priority sizes="100vw" className="h-full w-full object-cover" />
+      </m.div>
+      <div aria-hidden="true" className={cn('absolute inset-0 -z-10', overlay)} />
+      {rich && (
+        <Suspense fallback={null}>
+          <HeroConstellation onReady={onReady} />
+        </Suspense>
+      )}
+      {!webglReady && fallback}
+    </>
   )
 }
 
@@ -95,13 +137,17 @@ export function Hero() {
   const { t } = useLocale()
   const theme = useTheme()
   const image = t.hero.image
+  const sectionRef = useRef<HTMLElement>(null)
 
   if (theme.hero === 'editorial') {
     return (
-      <section id="home" aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-blue-900">
-        <SafeImage {...image} priority sizes="100vw" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-900 via-blue-900/85 to-blue-900/40" />
-        <div className="container-site flex min-h-[78vh] flex-col justify-center py-20">
+      <section ref={sectionRef} id="home" aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-blue-900">
+        <HeroBackdrop
+          sectionRef={sectionRef}
+          image={image}
+          overlay="bg-blue-900/80 md:bg-transparent md:bg-gradient-to-r md:from-blue-900 md:via-blue-900/80 md:to-blue-900/25"
+        />
+        <div className="container-site relative flex min-h-[78vh] flex-col justify-center py-20">
           <div className="max-w-3xl border-l-2 border-white/40 pl-6 sm:pl-10">
             <AdmissionsBadge />
             <Headline text={t.hero.headline} highlight={t.hero.highlight} className="mt-6 text-white" />
@@ -142,12 +188,19 @@ export function Hero() {
   }
 
   return (
-    <section id="home" aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-blue-900">
-      <SafeImage {...image} priority sizes="100vw" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-900/95 via-blue-700/85 to-blue-700/55" />
-      <FloatingShape className="right-[8%] top-16 h-16 w-16 rounded-full bg-accent-yellow/90" duration={7} />
-      <FloatingShape className="right-[22%] top-[55%] hidden h-8 w-8 rounded-lg bg-accent-red/90 sm:block" duration={8} delay={1} />
-      <FloatingShape className="left-[55%] top-10 hidden h-6 w-6 rounded-full bg-accent-green sm:block" duration={6} delay={0.5} />
+    <section ref={sectionRef} id="home" aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-blue-900">
+      <HeroBackdrop
+        sectionRef={sectionRef}
+        image={image}
+        overlay="bg-blue-900/80 md:bg-transparent md:bg-gradient-to-r md:from-blue-900/95 md:via-blue-900/70 md:to-blue-700/20"
+        fallback={
+          <>
+            <FloatingShape className="right-[8%] top-16 hidden h-16 w-16 rounded-full bg-accent-yellow/90 md:block" duration={7} />
+            <FloatingShape className="right-[22%] top-[55%] hidden h-8 w-8 rounded-lg bg-accent-red/90 md:block" duration={8} delay={1} />
+            <FloatingShape className="left-[55%] top-10 hidden h-6 w-6 rounded-full bg-accent-green md:block" duration={6} delay={0.5} />
+          </>
+        }
+      />
       <div className="container-site relative pb-16 pt-14 sm:pb-24 sm:pt-20 lg:pb-32 lg:pt-28">
         <div className="max-w-3xl">
           <AdmissionsBadge />

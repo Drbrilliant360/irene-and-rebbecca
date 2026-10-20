@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import { Footer } from './components/layout/Footer'
 import { Header } from './components/layout/Header'
 import { MobileCta } from './components/layout/MobileCta'
+import { ScrollProgress } from './components/ui/Motion'
 import { SkipLink } from './components/layout/SkipLink'
 import { About } from './components/sections/About'
 import { Academics } from './components/sections/Academics'
@@ -45,6 +46,7 @@ export default function App() {
   return (
     <>
       <SkipLink />
+      <ScrollProgress />
       <ErrorBoundary fallback={null}>
         <Header />
       </ErrorBoundary>

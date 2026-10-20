@@ -44,10 +44,13 @@ export function AudienceLinks() {
                   <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-700 shadow-soft">
                     <Icon aria-hidden="true" className="h-6 w-6 motion-safe:group-hover:animate-bounce-once motion-safe:group-focus-visible:animate-bounce-once" />
                   </span>
-                  <span className="relative flex-1">
-                    <span className="flex items-center gap-2 font-heading text-lg font-bold text-blue-900 transition-colors group-hover:text-white group-focus-visible:text-white">
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="absolute right-4 top-5 h-5 w-5 text-blue-700 transition-[transform,color] group-hover:translate-x-1 group-hover:text-white group-focus-visible:translate-x-1 group-focus-visible:text-white"
+                  />
+                  <span className="relative flex-1 pr-6">
+                    <span className="block font-heading text-lg font-bold text-blue-900 transition-colors group-hover:text-white group-focus-visible:text-white">
                       {item.title}
-                      <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1" />
                     </span>
                     <span className="mt-1 block text-ink transition-colors group-hover:text-white group-focus-visible:text-white">
                       {item.text}
