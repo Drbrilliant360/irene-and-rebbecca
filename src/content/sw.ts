@@ -7,16 +7,19 @@ import type { Content } from './types'
  * Tafsiri hii iwe imepitiwa na mzungumzaji wa Kiswahili wa shule kabla ya kuchapishwa.
  * Chochote kilicho ndani ya [MABANO_MRABA] ni nafasi ya kujazwa na shule.
  */
-const galleryCaptions = [
-  'Mkusanyiko wa asubuhi',
-  'Kona ya kusoma',
-  'Sanaa na ufundi',
-  'Siku ya michezo',
-  'Ugunduzi wa sayansi',
-  'Muziki na ngoma',
-  'Kujifunza nje',
-  'Marafiki wakati wa mapumziko',
-  'Siku ya sherehe',
+const galleryText = [
+  { caption: 'Familia ya shule yetu', alt: 'Wanafunzi waliovaa sare za kijani-bahari na njano pamoja na walimu na wageni, wakiwa kwenye mnara wa mawe wa Irene y Rebeca' },
+  { caption: 'Maonyesho ukumbini', alt: 'Wanafunzi waliovaa tracksuit na kofia za shule wakionyesha kipaji ukumbini huku wageni wakitazama wakiwa wameketi kwenye viti vya njano' },
+  { caption: 'Wakati wa uji', alt: 'Mpishi akimimina uji wa moto kwenye vikombe vya rangi mbalimbali mezani darasani' },
+  { caption: 'Ukumbi wetu wa mikusanyiko', alt: 'Ndani ya ukumbi: kuta za matofali zilizochorwa michoro ya rangi, ukionekana kupitia geti la chuma la kijani' },
+  { caption: 'Kuzunguka shule', alt: 'Njia ya udongo kati ya majengo ya madarasa ya matofali yenye paa za bluu na migomba michanga' },
+  { caption: 'Madarasa yetu', alt: 'Jengo la darasa la matofali mekundu lenye milango ya kijani, madirisha yenye nondo na paa la bati la bluu' },
+  { caption: 'Mazingira ya kijani', alt: 'Miti michanga na vichaka kwenye bustani ya shule, madarasa na mnara wa mawe nyuma yake' },
+  { caption: 'Marafiki wa shule', alt: 'Wageni watatu wamesimama kwenye nyasi mbele ya darasa la matofali lenye paa la bluu' },
+  { caption: 'Maisha ya kijijini', alt: 'Ng’ombe wenye pembe ndefu na kondoo wakitembea kwenye njia ya udongo mwekundu katikati ya nyasi ndefu' },
+  { caption: 'Majirani zetu', alt: 'Mwanakondoo mweupe mwenye kichwa cheusi amesimama kwenye udongo kando ya mimea ya kijani' },
+  { caption: 'Mwanga wa jioni', alt: 'Jua likizama juu ya vilima vya nyasi karibu na shule' },
+  { caption: 'Anga pana', alt: 'Nyanda za kijani zinazoenea hadi upeo wa macho chini ya anga la bluu lenye mawingu mepesi' },
 ]
 
 export const sw: Content = {
@@ -50,7 +53,7 @@ export const sw: Content = {
     headline: 'Mahali Kila Mtoto Hujifunza, Hukua na Kung’aa',
     highlight: 'Kung’aa',
     subline: `Elimu bora ya awali na makuzi kamili kwa watoto katika mazingira ya vijijini — ${site.district}, karibu na ${site.nearestTown}, ${site.region}.`,
-    image: { ...images.hero, alt: 'Wanafunzi wa Shule ya Msingi Irene and Rebeca (picha ya muda)' },
+    image: { ...images.hero, alt: 'Mnara wa mawe wa Irene y Rebeca kwenye lango la shule, bendera ya Tanzania na madarasa yenye paa za bluu nyuma yake' },
   },
   audiences: {
     title: 'Pata unachohitaji',
@@ -69,8 +72,14 @@ export const sw: Content = {
     vision: { title: 'Dira Yetu', text: '[DIRA — itatolewa na shule]' },
     story: [
       `${site.name} ni shule ya msingi iliyosajiliwa katika Wilaya ya ${site.district}, Mkoa wa ${site.region}, Tanzania.`,
-      '[HISTORIA_YA_SHULE — historia fupi: ilianzishwa lini ([MWAKA_WA_KUANZISHWA]), na nani, na nini kinaifanya kuwa ya kipekee.]',
+      'Sisi ni shule ya msingi ya mchepuo wa Kiingereza, iliyoko katikati ya kijiji tulivu na chenye amani. Tunatoa nafasi za bweni na za kutwa kwa gharama nafuu, tukiwapa watoto fursa ya elimu bora na maisha mema.',
+      '[HISTORIA_YA_SHULE — ilianzishwa lini ([MWAKA_WA_KUANZISHWA]), na nani, na nini kinaifanya kuwa ya kipekee.]',
     ],
+    setting: {
+      ...images.village,
+      caption: 'Nyumbani kwetu: kijiji tulivu kati ya mashamba ya migomba na misitu.',
+      alt: 'Majengo ya shule yenye paa za bluu kwenye kilima cha kijani kati ya migomba na misitu',
+    },
     regBadge: `Shule ya Msingi Iliyosajiliwa · Namba ya Usajili ${site.regNo} · ${site.regNo2}`,
     welcome: {
       title: 'Karibu kutoka kwa Mwalimu Mkuu',
@@ -114,19 +123,19 @@ export const sw: Content = {
         title: 'Elimu ya Awali',
         range: 'Chekechea',
         text: '[Kujifunza kwa michezo: kusoma mapema, namba, nyimbo na stadi za kijamii.]',
-        image: { ...images.stagePre, alt: 'Watoto wadogo wakijifunza kwa michezo (picha ya muda)' },
+        image: { ...images.stagePre, alt: 'Darasa la elimu ya awali lenye rafu za vinyago na michezo, meza za pembe sita na viti vya rangi' },
       },
       {
         title: 'Msingi wa Chini',
         range: 'Darasa la I – IV',
         text: '[Kujenga stadi imara za kusoma, kuandika na hesabu kwa kutiwa moyo.]',
-        image: { ...images.stageLower, alt: 'Wanafunzi wa madarasa ya chini darasani (picha ya muda)' },
+        image: { ...images.stageLower, alt: 'Mwanafunzi mdogo akionyesha silabi za Kiswahili ubaoni huku wenzake wenye kofia wakitazama' },
       },
       {
         title: 'Msingi wa Juu',
         range: 'Darasa la V – VII',
         text: '[Kujifunza kwa kina na maandalizi thabiti kwa mitihani ya taifa.]',
-        image: { ...images.stageUpper, alt: 'Wanafunzi wa madarasa ya juu wakishirikiana (picha ya muda)' },
+        image: { ...images.stageUpper, alt: 'Wanafunzi waliovaa sare wakikusanyika kwenye uwanja wa shule kando ya migomba na jengo la darasa' },
       },
     ],
     subjectsTitle: 'Masomo',
@@ -177,11 +186,7 @@ export const sw: Content = {
     eyebrow: 'Maisha Shuleni',
     title: 'Matukio kutoka shuleni kwetu',
     intro: 'Kujifunza, kucheza na kukua pamoja.',
-    images: images.gallery.map((img, i) => ({
-      ...img,
-      caption: galleryCaptions[i],
-      alt: `${galleryCaptions[i]} (picha ya muda)`,
-    })),
+    images: images.gallery.map((img, i) => ({ ...img, ...galleryText[i] })),
     follow: 'Tufuate Instagram',
     open: 'Fungua picha',
     lightbox: {

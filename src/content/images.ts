@@ -1,25 +1,47 @@
 /**
- * Image files and their real pixel sizes (used for width/height to prevent layout shift).
- * Swap a file in public/images/ and update its size here. Alt text lives in en.ts / sw.ts.
+ * Photos used on the site, with their real pixel sizes (prevents layout shift).
+ * Originals live in brand/instagram/ (from the school's Instagram); `npm run photos`
+ * turns them into the AVIF + JPEG sizes in public/images/photos/. Alt text lives in en.ts / sw.ts.
  *
  * Safeguarding: only use photos the school has parental consent for, never pair pupils'
- * full names with photos, and strip EXIF/location data before uploading.
+ * full names with photos. The optimise script strips EXIF/location data.
  */
+
+const photo = (slug: string, original: [number, number], widths = [480, 960]) => {
+  const [ow, oh] = original
+  const sizes = widths.map((w) => Math.min(w, ow))
+  const set = (ext: string) => widths.map((w, i) => `/images/photos/${slug}-${w}.${ext} ${sizes[i]}w`).join(', ')
+  const width = sizes[sizes.length - 1]
+  return {
+    src: `/images/photos/${slug}-${widths[widths.length - 1]}.jpg`,
+    width,
+    height: Math.round((width * oh) / ow),
+    sources: { avif: set('avif'), srcSet: set('jpg') },
+  }
+}
+
+const square = (slug: string, size = 1200) => photo(slug, [size, size])
+
 export const images = {
-  hero: { src: '/images/hero.svg', width: 1600, height: 900 },
+  hero: photo('entrance-monument', [1200, 1200], [640, 960, 1200]),
   headTeacher: { src: '/images/head-teacher.svg', width: 600, height: 720 },
-  stagePre: { src: '/images/stage-pre-primary.svg', width: 800, height: 600 },
-  stageLower: { src: '/images/stage-lower-primary.svg', width: 800, height: 600 },
-  stageUpper: { src: '/images/stage-upper-primary.svg', width: 800, height: 600 },
+  stagePre: square('preprimary-classroom'),
+  stageLower: square('kiswahili-lesson'),
+  stageUpper: square('pupils-on-campus'),
+  village: photo('village-view', [1080, 810], [480, 1080]),
+  /** Gallery order; captions/alt text are in the same order in en.ts / sw.ts. */
   gallery: [
-    { src: '/images/gallery-1.svg', width: 800, height: 600 },
-    { src: '/images/gallery-2.svg', width: 600, height: 800 },
-    { src: '/images/gallery-3.svg', width: 800, height: 800 },
-    { src: '/images/gallery-4.svg', width: 600, height: 800 },
-    { src: '/images/gallery-5.svg', width: 800, height: 600 },
-    { src: '/images/gallery-6.svg', width: 800, height: 800 },
-    { src: '/images/gallery-7.svg', width: 800, height: 600 },
-    { src: '/images/gallery-8.svg', width: 600, height: 800 },
-    { src: '/images/gallery-9.svg', width: 800, height: 600 },
+    square('school-family-photo'),
+    square('hall-performance'),
+    square('porridge-time'),
+    square('assembly-hall'),
+    square('campus-path'),
+    square('classroom-block'),
+    square('campus-garden', 1440),
+    square('visitors'),
+    square('cattle-path', 1125),
+    square('lamb', 1440),
+    square('sunset', 1440),
+    square('open-plains', 1440),
   ],
 } as const

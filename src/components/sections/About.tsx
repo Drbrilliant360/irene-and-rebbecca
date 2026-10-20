@@ -45,6 +45,22 @@ export function About() {
           ))}
         </div>
 
+        <Reveal className="mt-12">
+          <figure
+            className={cn(
+              'overflow-hidden',
+              theme.name === 'C' ? 'rounded-card border-2 border-blue-900 shadow-chunky' : theme.name === 'B' ? '' : 'rounded-card shadow-soft',
+            )}
+          >
+            <SafeImage
+              {...a.setting}
+              sizes="(min-width: 1152px) 1088px, 100vw"
+              className="aspect-[4/3] w-full object-cover sm:aspect-[21/9]"
+            />
+            <figcaption className="bg-blue-50 px-5 py-3 text-ink">{a.setting.caption}</figcaption>
+          </figure>
+        </Reveal>
+
         <div className="mt-16 grid items-center gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <figure

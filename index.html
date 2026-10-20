@@ -11,7 +11,14 @@
     <meta name="theme-color" content="#1E4FA3" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <!-- After deployment, add: <link rel="canonical" href="https://YOUR-DOMAIN/" /> -->
-    <link rel="preload" as="image" href="/images/hero.svg" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      imagesrcset="/images/photos/entrance-monument-640.avif 640w, /images/photos/entrance-monument-960.avif 960w, /images/photos/entrance-monument-1200.avif 1200w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
 
     <!-- Open Graph / social sharing -->
     <meta property="og:type" content="website" />

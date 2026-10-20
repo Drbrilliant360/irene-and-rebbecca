@@ -6,16 +6,19 @@ import type { Content } from './types'
  * ALL English text for the site. Edit freely — no code knowledge needed.
  * Anything in [SQUARE_BRACKETS] is a placeholder for the school to replace.
  */
-const galleryCaptions = [
-  'Morning assembly',
-  'Reading corner',
-  'Art and craft',
-  'Sports day',
-  'Science discovery',
-  'Music and dance',
-  'Learning outdoors',
-  'Friends at break time',
-  'Celebration day',
+const galleryText = [
+  { caption: 'Our school family', alt: 'Pupils in turquoise and yellow uniforms with teachers and visitors, gathered around the stone Irene y Rebeca monument' },
+  { caption: 'Performing in the hall', alt: 'Pupils in school tracksuits and caps performing in the open-sided hall while guests watch from yellow chairs' },
+  { caption: 'Warm porridge time', alt: 'A cook pours steaming porridge into colourful plastic cups on a classroom table' },
+  { caption: 'Our assembly hall', alt: 'Inside the assembly hall: brick walls painted with colourful murals, seen through a green metal gate' },
+  { caption: 'Around the campus', alt: 'A dirt path between brick classroom blocks with blue roofs and young banana trees' },
+  { caption: 'Our classrooms', alt: 'A red-brick classroom block with green doors, barred windows and a blue tin roof' },
+  { caption: 'Green, shady grounds', alt: 'Young trees and shrubs in the school garden, with classrooms and the stone tower behind' },
+  { caption: 'Friends of the school', alt: 'Three visitors standing on the lawn in front of a brick classroom with a blue pyramid roof' },
+  { caption: 'Rural life', alt: 'Long-horned cattle and sheep walking along a red-earth path through tall grass' },
+  { caption: 'Our neighbours', alt: 'A white lamb with a black head standing on bare earth beside green plants' },
+  { caption: 'Evening light', alt: 'The sun setting over rolling grassy hills near the school' },
+  { caption: 'Wide open skies', alt: 'Open green plains stretching to the horizon under a bright blue sky with wispy clouds' },
 ]
 
 export const en: Content = {
@@ -49,7 +52,7 @@ export const en: Content = {
     headline: 'Where Every Child Learns, Grows and Shines',
     highlight: 'Shines',
     subline: `Quality early education and holistic growth for children in a rural environment — in ${site.district}, near ${site.nearestTown}, ${site.region}.`,
-    image: { ...images.hero, alt: 'Pupils at Irene and Rebeca Primary School (placeholder image)' },
+    image: { ...images.hero, alt: 'The stone Irene y Rebeca monument at the school entrance, with the Tanzanian flag and blue-roofed classrooms behind' },
   },
   audiences: {
     title: 'Find what you need',
@@ -92,8 +95,14 @@ export const en: Content = {
     vision: { title: 'Our Vision', text: '[VISION_STATEMENT — to be provided by the school]' },
     story: [
       `${site.name} is a registered primary school in ${site.district} District, ${site.region} Region, Tanzania.`,
-      '[SCHOOL_STORY — a short history: when the school was founded ([FOUNDING_YEAR]), by whom, and what makes it special.]',
+      'We are an English-medium primary school, nestled in the heart of a peaceful, quiet village. We offer affordable boarding and day places, giving children access to a good education and a wholesome lifestyle.',
+      '[SCHOOL_STORY — when the school was founded ([FOUNDING_YEAR]), by whom, and what makes it special.]',
     ],
+    setting: {
+      ...images.village,
+      caption: 'Our home: a peaceful village setting among banana farms and forest.',
+      alt: 'The school’s blue-roofed buildings on a green hillside among banana trees and forest',
+    },
     regBadge: `Registered Primary School · Reg. No. ${site.regNo} · ${site.regNo2}`,
     welcome: {
       title: 'Welcome from our Head Teacher',
@@ -161,19 +170,19 @@ export const en: Content = {
         title: 'Pre-Primary',
         range: 'Nursery & Kindergarten',
         text: '[Play-based learning: early reading, numbers, songs and social skills.]',
-        image: { ...images.stagePre, alt: 'Young children learning through play (placeholder image)' },
+        image: { ...images.stagePre, alt: 'A pre-primary classroom with shelves of toys and games, hexagonal tables and colourful chairs' },
       },
       {
         title: 'Lower Primary',
         range: 'Standard I – IV',
         text: '[Building strong reading, writing and maths skills with lots of encouragement.]',
-        image: { ...images.stageLower, alt: 'Lower primary pupils in class (placeholder image)' },
+        image: { ...images.stageLower, alt: 'A young pupil points to Kiswahili syllables on the blackboard while classmates in caps watch' },
       },
       {
         title: 'Upper Primary',
         range: 'Standard V – VII',
         text: '[Deeper learning and steady preparation for the national examinations.]',
-        image: { ...images.stageUpper, alt: 'Upper primary pupils working together (placeholder image)' },
+        image: { ...images.stageUpper, alt: 'Pupils in uniform gathering on the school grounds beside banana trees and a classroom block' },
       },
     ],
     subjectsTitle: 'Subjects',
@@ -224,11 +233,7 @@ export const en: Content = {
     eyebrow: 'Life at School',
     title: 'Moments from our school',
     intro: 'Learning, playing and growing together.',
-    images: images.gallery.map((img, i) => ({
-      ...img,
-      caption: galleryCaptions[i],
-      alt: `${galleryCaptions[i]} (placeholder image)`,
-    })),
+    images: images.gallery.map((img, i) => ({ ...img, ...galleryText[i] })),
     follow: 'Follow us on Instagram',
     open: 'Open photo',
     lightbox: {

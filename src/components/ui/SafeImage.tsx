@@ -11,10 +11,12 @@ interface SafeImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src'
   priority?: boolean
   /** Optional modern formats, e.g. { avif: '/images/hero.avif', webp: '/images/hero.webp' }. */
   sources?: { avif?: string; webp?: string; srcSet?: string }
+  /** Accepted (and ignored) so ImageContent objects can be spread straight in. */
+  caption?: string
 }
 
 /** <img> with explicit size (no layout shift), lazy loading, and a coloured fallback if the file fails. */
-export function SafeImage({ src, alt, width, height, priority, sources, className, sizes, ...rest }: SafeImageProps) {
+export function SafeImage({ src, alt, width, height, priority, sources, className, sizes, caption: _caption, ...rest }: SafeImageProps) {
   const [failed, setFailed] = useState(false)
 
   if (failed) {

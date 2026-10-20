@@ -1,4 +1,4 @@
-// Generates lightweight SVG placeholder art in public/images/.
+// Generates the head-teacher placeholder in public/images/ (the photos are real — see npm run photos).
 // Replace these with real, consented, EXIF-stripped photos (see README → Images).
 // The logo and favicon are NOT generated here — they come from brand/ (see README → Logo).
 // Run: npm run placeholders
@@ -72,8 +72,6 @@ function scene(w, h, bg, a, b, label) {
 </svg>`
 }
 
-write('hero.svg', landscape(1600, 900))
-
 write('head-teacher.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" width="600" height="720">
   <rect width="600" height="720" fill="${C.pale}"/>
   <circle cx="480" cy="110" r="70" fill="${C.yellow}"/>
@@ -81,25 +79,5 @@ write('head-teacher.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 
   <path d="M100 720 C 100 520, 500 520, 500 720 Z" fill="${C.blue}" opacity="0.9"/>
   ${caption(600, 720, 'Head Teacher photo')}
 </svg>`)
-
-const stages = [
-  ['stage-pre-primary.svg', '#FFF4CC', C.yellow, C.red, 'Pre-Primary photo'],
-  ['stage-lower-primary.svg', '#E6F4EC', C.green, C.sky, 'Lower Primary photo'],
-  ['stage-upper-primary.svg', C.pale, C.sky, C.yellow, 'Upper Primary photo'],
-]
-for (const [name, bg, a, b, label] of stages) write(name, scene(800, 600, bg, a, b, label))
-
-const gallery = [
-  [800, 600, C.blue, C.yellow, C.green],
-  [600, 800, C.green, C.yellow, C.sky],
-  [800, 800, C.red, C.yellow, C.blue],
-  [600, 800, C.sky, C.green, C.yellow],
-  [800, 600, C.navy, C.red, C.yellow],
-  [800, 800, C.green, C.sky, C.red],
-  [800, 600, C.blue, C.green, C.yellow],
-  [600, 800, C.red, C.sky, C.green],
-  [800, 600, C.sky, C.yellow, C.red],
-]
-gallery.forEach(([w, h, bg, a, b], i) => write(`gallery-${i + 1}.svg`, scene(w, h, bg, a, b, `Photo ${i + 1} coming soon`)))
 
 console.log('Placeholder images written to public/images/')

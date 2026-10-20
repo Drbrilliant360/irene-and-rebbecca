@@ -33,15 +33,27 @@ All words on the site live in two files:
 
 Change the text between the quotes and save. Anything in `[SQUARE_BRACKETS]` is a placeholder.
 
-### Images
+### Photos
 
-1. Put photos in `public/images/` (JPG/WebP/AVIF; hero ≤ 150 KB, others ≤ 200 KB, ~1600 px wide for the hero, ~800 px for the rest).
-2. Update the file name and real `width`/`height` in `src/content/images.ts`.
-3. Update the matching alt text in `en.ts` and `sw.ts` (describe the photo; remove "(placeholder image)").
+All 17 photos come from the school's Instagram (@ireneandrebecaprimary). The originals are in `brand/instagram/`
+(`ir-<post code>-1.jpg`); `npm run photos` (`scripts/optimize-photos.mjs`) turns them into AVIF + JPEG sizes
+in `public/images/photos/` with metadata stripped, and makes `public/images/og-image.jpg`.
+
+| Where | Photo |
+| --- | --- |
+| Hero | Stone "Irene y Rebeca" entrance monument with the Tanzanian flag |
+| About banner | Hillside village view of the school |
+| Pre-Primary / Lower / Upper | Pre-primary classroom · Kiswahili syllables lesson · pupils gathering on campus |
+| Gallery (12) | School family photo, hall performance, porridge time, assembly hall, campus path, classroom block, garden, visitors, cattle, lamb, sunset, open plains |
+
+To add or swap a photo:
+1. Put the original in `brand/instagram/` and add it to the `PHOTOS` list in `scripts/optimize-photos.mjs`.
+2. Run `npm run photos`.
+3. Reference it in `src/content/images.ts` and write its alt text/caption in `en.ts` and `sw.ts` (same order).
 
 **Safeguarding:** only use photos the school has parental consent for, never put pupils' full names next to photos, and strip location/EXIF data before uploading (e.g. `exiftool -all= photo.jpg`, or export with "remove location" on your phone).
 
-The current photos are generated placeholders (`npm run placeholders` recreates them; it never touches the logo).
+Only the head-teacher portrait is still a placeholder (`npm run placeholders` recreates it; it never touches the logo or photos).
 
 ### Logo
 
@@ -137,7 +149,7 @@ public/                     images, favicon, _headers, robots.txt
 - Footer privacy notice: `[PRIVACY_CONTACT]`
 
 **Files**
-- `public/images/*` — all photos (currently placeholders)
+- Head-teacher photo (`public/images/head-teacher.svg` is a placeholder)
+- Confirm parental consent for the Instagram photos that show pupils
 - Logo — optionally replace the redraw with the school's official vector file
-- `public/images/og-image.jpg` — social sharing image (1200×630)
 - `index.html` — canonical URL, `og:url`, `og:image` once the domain is known

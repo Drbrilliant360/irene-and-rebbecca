@@ -29,6 +29,8 @@ export interface ImageContent {
   width: number
   height: number
   caption?: string
+  /** Responsive sources: AVIF srcset plus a JPEG srcset fallback. */
+  sources?: { avif?: string; webp?: string; srcSet?: string }
 }
 
 export interface Content {
@@ -62,6 +64,7 @@ export interface Content {
     vision: { title: string; text: string }
     story: string[]
     regBadge: string
+    setting: ImageContent & { caption: string }
     welcome: { title: string; text: string[]; name: string; role: string; image: ImageContent }
   }
   whyUs: {
